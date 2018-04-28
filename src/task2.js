@@ -1,8 +1,9 @@
 const R = require('ramda');
 
-const checkAndSend = R.memoizeWith(R.identity, () => {
-  console.log('Request has been sent')
-});
+const checkAndSend = callBack =>
+  R.memoizeWith(R.identity, id => {
+    callBack(id);
+  });
 
 module.exports = {
   checkAndSend,

@@ -1,15 +1,32 @@
 const { checkAndSend } = require('./task2');
 
 describe('checkAndSend', () => {
-  it('should return true if id is new', () => {
-    expect(checkAndSend('1488')).toBeTruthy();
-    expect(checkAndSend('1489')).toBeTruthy();
-    expect(checkAndSend('1490')).toBeTruthy();
+  let callBack;
+  beforeEach(() => {
+    callBack = jest.fn();
   });
 
-    it('should return true if id is new', () => {
-      expect(checkAndSend('1588')).toBeTruthy();
-      expect(checkAndSend('1588')).toBeFalsy();
-      expect(checkAndSend('1589')).toBeTruthy();
-    });
+  it('should call all calbacks', () => {
+    const sendById = checkAndSend(callBack);
+
+    sendById('1488');
+    sendById('1489');
+    sendById('1490');
+
+    expect(callBack.mock.calls.length).toBe(3);
+    expect(callBack.mock.calls[0][0]).toBe('1488');
+    expect(callBack.mock.calls[1][0]).toBe('1489');
+    expect(callBack.mock.calls[2][0]).toBe('1490');
+  });
+
+  it('should call calbacks only if id is uniq', () => {
+    const sendById = checkAndSend(callBack);
+    sendById('1488');
+    sendById('1489');
+    sendById('1489');
+
+    expect(callBack.mock.calls.length).toBe(2);
+    expect(callBack.mock.calls[0][0]).toBe('1488');
+    expect(callBack.mock.calls[1][0]).toBe('1489');
+  });
 });
