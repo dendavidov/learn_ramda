@@ -1,9 +1,8 @@
 # Ramda practice 
 
-This is a project that contains two task solutions solved with ramda (http://ramdajs.com/):
+This project contains two tasks solved with JavaScript and Ramda (http://ramdajs.com/):
 
-## Task 1. 
-
+## Task 1
 There is an array with objects. Make a hashMap where index is the id property of the array items.
 
 Example:
@@ -25,8 +24,7 @@ Function should return:
 }
 ```
 
-
-## Task 2.
+## Task 2
 There is a function that makes an ajax request, for instance. 
 Write a function that is called only if parameter is unique.
 
