@@ -9,6 +9,8 @@ const makeHashMap = apartmentsArray => {
   //   return hashMap;
   // }, {}, apartmentsArray);
 
+  // и еще проще:
+
   return R.indexBy(R.prop('id'), apartmentsArray);
 };
 
