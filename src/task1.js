@@ -4,10 +4,12 @@ const makeHashMap = apartmentsArray => {
   if (!Array.isArray(apartmentsArray))
     throw new Error('apartmentsArray should be an array');
 
-  return R.reduce((hashMap, item) => {
-    hashMap[item.id] = item;
-    return hashMap;
-  }, {}, apartmentsArray);
+  // return R.reduce((hashMap, item) => {
+  //   hashMap[item.id] = item;
+  //   return hashMap;
+  // }, {}, apartmentsArray);
+
+  return R.indexBy(R.prop('id'), apartmentsArray);
 };
 
 module.exports = {
