@@ -6,7 +6,7 @@ describe('checkAndSend', () => {
     callBack = jest.fn();
   });
 
-  it('should call all calbacks', () => {
+  it('should call all callbacks', () => {
     const sendById = checkAndSend(callBack);
 
     sendById('1488');
@@ -19,7 +19,7 @@ describe('checkAndSend', () => {
     expect(callBack.mock.calls[2][0]).toBe('1490');
   });
 
-  it('should call calbacks only if id is uniq', () => {
+  it('should call callbacks only if id is uniq', () => {
     const sendById = checkAndSend(callBack);
     sendById('1488');
     sendById('1489');
