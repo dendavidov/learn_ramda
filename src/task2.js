@@ -1,16 +1,8 @@
-const cache = [];
+const R = require('ramda');
 
-const checkAndSend = id => {
-  if (cache.includes(id)) {
-    // this id has been already sent, do nothing
-    return false;
-  }
-
-  cache.push(id);
-
-  // here we send request
-  return true;
-};
+const checkAndSend = R.memoizeWith(R.identity, () => {
+  console.log('Request has been sent')
+});
 
 module.exports = {
   checkAndSend,
